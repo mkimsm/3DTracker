@@ -25,6 +25,8 @@ def package(x):
          pkg[L].append(stringtoarray(line))
    return pkg
    
+   
+
 R = package('NIFFTE-alphas.dat')
 
 k = raw_input('What event would you like to use?\n')
@@ -118,12 +120,19 @@ print(Y)
 print(Z)
 
 import numpy
+import mayavi
 from mayavi.mlab import *
 
 
-points3d(x, y, z, colormap="copper", scale_factor=.35)
-plot3d(X,Y,Z,tube_radius=0.1, color=(.9,.3,.2))
-plot3d(Xn,Yn,Zn,tube_radius=0.1, color=(.9,.3,.2))
+mayavi.mlab.figure(figure='Collision', bgcolor=(0,0,0), fgcolor=None, engine=None, size=(1200, 800))
+points3d(x, y, z, scale_factor=.35, color=(.04,.85,.14))
+
+mayavi.mlab.axes( color=(1,1,1), x_axis_visibility=True, xlabel='x', y_axis_visibility=True, ylabel='y', z_axis_visibility=True, zlabel='z')
+mayavi.mlab.title('This is physics')
+plot3d(X,Y,Z,tube_radius=0.1, color=(.94,1,0))
+plot3d(Xn,Yn,Zn,tube_radius=0.1, color=(.94,1,0))
+
+
 
 #import matplotlib.pyplot as plt
 #import mpl_toolkits.mplot3d as m3d
